@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio - Lakshmi Sri Divya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6e40bfe173.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('TRYF.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-60px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    section {
+      padding: 60px 20px;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 30px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #0d00ff; }
+      100% { text-shadow: 0 0 20px #000000, 0 0 30px rgb(0, 34, 255); }
+    }
+
+    .about-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .profile-img {
+      width: 280px;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 50% / 40%;
+      border: 5px solid white;
+      box-shadow: 0 0 20px rgba(0,255,255,0.8);
+    }
+
+    .about-content {
+      max-width: 500px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .education-table {
+      border-collapse: collapse;
+      margin-top: 30px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 20px cyan;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid white;
+    }
+
+    .education-table th,
+    .education-table td {
+      padding: 12px 15px;
+      border: 1px solid white;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .education-table th {
+      background-color: rgba(0,0,0,0.6);
+      font-weight: bold;
+    }
+
+    .education-table tr {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .education-table.visible tr {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .projects-content img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 0 25px rgba(0,255,255,0.7);
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .skill-box {
+      width: 250px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid white;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .skill-box:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 157, 255, 0.6);
+    }
+
+    .skill-box:hover::after {
+      content: attr(data-details);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background:rgba(255, 255, 255, 0.2);
+      color:white;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 10px;
+      animation: fadeIn 0.5s ease forwards;
+      z-index: 10;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .skill-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .resume-button {
+      display: inline-block;
+      padding: 12px 25px;
+      background: white;
+      color:black;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 25px;
+      box-shadow: 0 0 12px #00ffd5;
+      transition: 0.3s ease;
+    }
+
+    .resume-button:hover {
+      background: #fff;
+      box-shadow: 0 0 25px rgb(0, 140, 255);
+    }
+
+    .socials {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2rem;
+    }
+
+    .socials a {
+      margin: 0 15px;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+      color: cyan;
+      text-shadow: 0 0 20px cyan;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .gallery-container img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      border: 3px solid white;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px cyan;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .back-to-top {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-size: 1.5rem;
+      color: cyan;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .about-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .education-table {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Raviprolu Lakshmi Sri Divya</h1>
+    <p>💻 Aspiring Full-Stack Developer | Creative Coder | Learner for Life 🚀</p>
+  </header>
+
+  <section>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-wrapper">
+      <img class="profile-img" src="C:\Users\narasimhasai\Downloads\DIVYA VR MALL PIC 1.jpg" alt="Lakshmi Sri Divya">
+      <div class="about-content">
+        I'm a passionate student exploring the world of technology and programming.<br>
+        I love building creative web pages and solving real-world problems using code.<br>
+        I'm certified in C++, HTML, CSS, JavaScript, and Data Analytics.<br>
+        My goal is to become a full-stack developer and contribute meaningfully to impactful projects.
+      </div>
+    </div>
+
+    <table class="education-table">
+      <tr>
+        <th>Class/Course</th>
+        <th>Institution Name</th>
+        <th>Year of Passing</th>
+      </tr>
+      <tr>
+        <td>10th</td>
+        <td>Everwin Vidhyashram (CBSE)</td>
+        <td>2022</td>
+      </tr>
+      <tr>
+        <td>12th</td>
+        <td>Everwin Vidhyashram (CBSE)</td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td>BE - CSE</td>
+        <td>R.M.D Engineering College</td>
+        <td>Currently Pursuing (2028)</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="section-title">Skills & Certifications</h2>
+    <div class="skills-container">
+      <div class="skill-box" data-details="Strong OOPs foundation, recursion, STL, competitive programming. Used in ECOSORT hardware logic.">
+        <div class="skill-title">C++</div>
+        <div>Gained knowledge through academic courses and real-time implementation in projects.</div>
+      </div>
+      <div class="skill-box" data-details="OOP, JDBC, backend logic. Built CLI apps and mini Java backend setups.">
+        <div class="skill-title">Java</div>
+        <div>Hands-on experience in database connectivity and backend development.</div>
+      </div>
+      <div class="skill-box" data-details="Pandas, NumPy, matplotlib for dashboards. Used in analytics internship.">
+        <div class="skill-title">Python</div>
+        <div>Completed GFG and Kaggle certifications. Built data visualizations.</div>
+      </div>
+      <div class="skill-box" data-details="Built pages with animations, responsive design using Flexbox/Grid.">
+        <div class="skill-title">HTML/CSS</div>
+        <div>Certified via Coursera & FreeCodeCamp. Applied in all web projects.</div>
+      </div>
+      <div class="skill-box" data-details="DOM, form validation, real-time interactivity. Project logic integration.">
+        <div class="skill-title">JavaScript</div>
+        <div>Enhanced dynamic behavior in portfolio and ECOSORT site.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-content" style="text-align:center;">
+      <h3>ECOSORT: Smart Waste Segregation System</h3>
+      <p>
+        ECOSORT is an innovative solution designed to automate waste segregation in medical environments.<br>
+        Built using Arduino Uno, ultrasonic & moisture sensors, it detects and classifies dry, wet, and metal waste.<br>
+        <strong>Highlights:</strong> SDG aligned (3, 6, 11, 12), hospital waste solution, automation in sustainability.<br>
+        <strong>Role:</strong> I developed sensor code, LCD logic, and presented to experts.<br>
+        <strong>Tools:</strong> Arduino Uno, LCD Display, Simulation tools<br>
+        <img src="C:\Users\narasimhasai\Downloads\ECOSORT FINAL.jpg" alt="ECOSORT Project Image"><br>
+        <a class="resume-button" href="https://docs.google.com/presentation/d/1T8Tx6BodZE695JlTRptw9TV37fp6_vX_/edit?usp=drive_link&ouid=109921787959587558418&rtpof=true&sd=true" download>📊 Download PPT</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Resume</h2>
+    <div class="resume-content" style="text-align:center;">
+      Click below to view/download my latest resume:<br>
+      <a class="resume-button" href="https://drive.google.com/file/d/1B8S8LyKaWyuJ6HBzu3whOVkz5i-WvpCy/view?usp=drive_link" download>📄 Download Resume</a>
+    </div>
+  </section>
+  <section>
+  <h2 class="section-title">Gallery - My Certifications</h2>
+  <div class="gallery-container">
+    <img src="CER1.jpg" alt="Certification 1">
+    <img src="CER2.jpg" alt="Certification 2">
+    <img src="CER3.jpg" alt="Certification 3">
+    <img src="CER4.jpg" alt="Certification 4">
+    <img src="CER5.jpg" alt="Certification 5">
+  </div>
+</section>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const table = document.querySelector('.education-table');
+    const tableTop = table.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (tableTop < windowHeight - 100) {
+      table.classList.add('visible');
+    }
+  });
+</script>
+
+  <section>
+    <h2 class="section-title">Contact Me</h2>
+    <p>📧 Email: <a href="mailto:raviprolu.lakshmisridivya@gmail.com">raviprolu.lakshmisridivya@gmail.com</a></p>
+    <p>📱 Phone: +91 8667268436</p>
+    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/lakshmi-sri-divya-raviprolu-a56801331/" target="_blank">LinkedIn🔗Connect</a></p>
+    <p>📍 Location: Chennai, Tamil Nadu, India</p>
+  </section>
+
+  <footer>
+    © 2025 Raviprolu Lakshmi Sri Divya.
+    <div class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⬆️</div>
+  </footer>
+</body>
+</html>
